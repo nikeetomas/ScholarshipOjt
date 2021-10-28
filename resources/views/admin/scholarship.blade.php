@@ -32,44 +32,57 @@
                       <th>Discount</th>
                       <th>Sem <br> Charged</th>
                       <th>Funded <br> By</th>
+                      <th>Applicable <br> Policy</th> 
+                      <th>Qualification</th>
+                      <th>Amount of <br> Grant/Stipend</th>
+                      <th>General <br> Guidelines</th>
+                      <th>Contact <br> Information</th> 
                       <th>Status</th>
                       <th>Edit</th>
                       <th>Delete</th>
                     </thead>
                     <tbody>
-                      @foreach ( $scholarships as $row)
+                      @foreach ( $scholarships as $scholarships)
+                     
                       <tr>
-                        <td>{{ $row->id }}</td>
-                        <td>{{ $row->scholarship_type }}</td>
-                        <td>{{ $row->scholarship }}</td>
-                        <td>{{ $row->discount }}</td>
-                        @if ($row->sem_charged == 1)
+                        <td>{{ $scholarships->id }}</td>
+                        <td>{{ $scholarships->scholarship_type }}</td>
+                        <td>{{ $scholarships->scholarship }}</td>
+                        <td>{{ $scholarships->discount }}</td>
+                        @if ($scholarships->sem_charged == 1)
                         <td>1st Semester</td>
-                        @elseif($row->sem_charged == 2)
+                        @elseif($scholarships->sem_charged == 2)
                         <td> 2nd Semester</td>
-                        @elseif($row->sem_charged == 3)
+                        @elseif($scholarships->sem_charged == 3)
                         <td>Mid Year</td>
-                        @elseif($row->sem_charged == 12)
+                        @elseif($scholarships->sem_charged == 12)
                         <td>1st Semester <br> 2nd Semester</td> 
-                        @elseif ($row->sem_charged == 123)
+                        @elseif( $scholarships->sem_charged == 123)
                         <td>1st Semester <br>2nd Semester <br> Mid Year</td>
                         @else
                         <td>--NONE--</td>
                         @endif
-                        <td>{{ $row->funded_by }}</td>          
-                        @if($row->active == 1)
+                        <td>{{ $scholarships->funded_by }}</td>   
+                        <td>{{ $scholarships->appli_poli}}</td>   
+                        <td>{{$scholarships->qualification }}</td>   
+                        <td>{{ $scholarships->amount_of_grant }}</td>   
+                        <td>{{ $scholarships->gen_guideline }}</td>   
+                        <td>{{ $scholarships->contact_info }}</td>   
+
+                               
+                        @if($scholarships->active == 1)
                         <td>Active</td>
-                      @else ($row->active == 0)
+                      @else ($scholarships->active == 0)
                       <td> Inactive</td>
                       @endif
                     
 
                         <td> 
-                          <a href="/scholarhip-edit/{{ $row->id }}" class="btn btn-success">Edit</a>
+                          <a href="/scholarhip-edit/{{ $scholarships->id }}" class="btn btn-success">Edit</a>
                         </td>
 
                         <td> 
-                          <form action="/scholarship-delete/{{ $row->id }}" method="POST">
+                          <form action="/scholarship-delete/{{ $scholarships->id }}" method="POST">
                           {{ csrf_field() }}
                           {{method_field('DELETE')}}
                             <button type="submit" class="btn btn-danger">Delete</button>
@@ -77,6 +90,7 @@
                         </td>
                     </tr>
                     @endforeach
+                   
                     </tbody>
                 </table>
                 </div>

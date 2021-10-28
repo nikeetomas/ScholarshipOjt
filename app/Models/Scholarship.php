@@ -43,5 +43,4 @@ class Scholarship extends Model
 		'chargedfull',
 		'active'
 	];
-	
 }

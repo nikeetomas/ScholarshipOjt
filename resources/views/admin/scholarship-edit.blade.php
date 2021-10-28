@@ -15,7 +15,7 @@
                     <div class="card-body">
                         <div class="row">
                             <div class="col-md-12">
-                                <form action="/scholarship-update/{{ $scholarships->id }}" method="POST">
+                                <form action="/scholarship-update/{{ $sdetail->id }}" method="POST">
                                 
                                 {{ csrf_field() }}
                                 {{ method_field('PUT') }}  
@@ -37,7 +37,7 @@
 
                                 <div class="form-group">
                                 <label>Sem Charged</label>
-                                <input type="text" name="sem_charged" value="{{ $scholarships->sem_charged }}" class="form-control">
+                                <input type="text" name="sem_charged" value="{{$scholarships->sem_charged }}" class="form-control">
                                 </div>
 
                                 <div class="form-group">
@@ -46,8 +46,28 @@
                                 </div>
 
                                 <div class="form-group">
-                                <label>Charged Full</label>
-                                <input type="text" name="chargedfull" value="{{ $scholarships->chargedfull }}" class="form-control">
+                                <label>Applicable Policy</label>
+                                <input type="text" name="appli_poli" value="{{    $sdetails->appli_poli }}" class="form-control">
+                                </div>
+
+                                <div class="form-group">
+                                <label>Qualification</label>
+                                <input type="text" name="qualification" value="{{    $sdetails->qualification }}" class="form-control">
+                                </div>
+
+                                <div class="form-group">
+                                <label>Amount of Grant/Stipend</label>
+                                <input type="text" name="amount_of_grant" value="{{    $sdetails->amount_of_grant }}" class="form-control">
+                                </div>
+
+                                <div class="form-group">
+                                <label>General Guideline</label>
+                                <input type="text" name="gen_guideline" value="{{    $sdetails->gen_guideline }}" class="form-control">
+                                </div>
+
+                                <div class="form-group">
+                                <label>Contact Information</label>
+                                <input type="text" name="contact_info" value="{{    $sdetails->contact_info }}" class="form-control">
                                 </div>
 
                                 <div class="form-group">
